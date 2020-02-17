@@ -1,0 +1,9 @@
+<h1>Add Ingredients</h1>
+<%= form_for @ingredient do |f| %>
+    <%= render partial: "users/error", locals: {error_term: @ingredient} %>
+    <%= f.label "Please enter the quantity of the particular ingredient:" %><br>
+    <%= f.text_field :quantity %><br>
+    <%= f.label "Ingredient Name:" %><br>
+    <%= f.text_field :name %><br><br>
+    <%= f.submit "Submit Ingredient" %>
+<% end %>

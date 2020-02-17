@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
   resources :recipes do
     resources :categories, only: [:index, :create, :new]
+    resources :ingredients, only: [:new, :create, :index]
   end
   resources :categories do
     resources :recipes, only: [:index, :show]
   end
+  resources :ingredients
 end
