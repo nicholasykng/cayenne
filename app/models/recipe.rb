@@ -7,9 +7,8 @@ class Recipe < ApplicationRecord
     has_many :comments
     has_many :ratings
     validates :title, presence: true
-    validates :level, inclusion: {in: %w(easy, intermediate, advanced)}
+    validates :level, inclusion: {in: %w(easy intermediate advanced), message: "Please be sure to enter easy, intermediate or advanced"}
     validates :cook_time, presence: true
     validates :serving_size, presence: true
     validates :directions, presence: true
-    validates :category_ids, acceptance: true
 end
