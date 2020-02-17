@@ -1,0 +1,20 @@
+<h1><%= @recipe.title %>
+<h2>Created By: <%= @recipe.user.name %></h2>
+<table>
+<thead>
+    <tr>
+        <th>Level of Difficulty</th>
+        <th>Cook Time</th>
+        <th>Serving Size</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><%= @recipe.level %></td>
+        <td><%= @recipe.cook_time %></td>
+        <td><%= @recipe.serving_size %></td>
+    </tr>
+</tbody>
+</table>
+Directions:
+<%= @recipe.directions %>

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "/logout" => 'sessions#destroy'
   root "users#index"
   get '/auth/facebook/callback' => 'sessions#create'
+  resources :recipes
 end

@@ -1,0 +1,13 @@
+<%= form_for @recipe do |f| %>
+    <%= f.label "Title of Recipe" %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label "Level of Difficulty (Easy, Medium or Hard)" %><br>
+    <%= f.text_field :level %><br>
+    <%= f.label "Cook Time (Please include minutes and/or hour required)" %><br>
+    <%= f.text_field :cook_time %><br>
+    <%= f.label "Serving Size (Please enter the number of servings)" %><br>
+    <%= f.text_field :serving_size %><br>
+    <%= f.label "Directions (Please list out the directions in a numbered list)" %><br>
+    <%= f.text_area :directions %><br><br>
+    <%= f.submit "Submit Recipe" %>
+<% end %>
