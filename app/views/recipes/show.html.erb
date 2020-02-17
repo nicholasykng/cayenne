@@ -28,7 +28,7 @@
 </ul>
 <br>
 <h3>Links to Other Recipes With Similar Ingredients</h3>
-</ul>
+<ul>
 <% @recipe.ingredients.each do |ingredient| %>
     <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
 <% end %>
