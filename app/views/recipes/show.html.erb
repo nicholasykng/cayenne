@@ -16,6 +16,8 @@
     </tr>
 </tbody>
 </table><br>
+<h3>Ingredients:</h3>
+<%= @recipe.ingredients_list %>
 <h3>Directions:</h3><br>
 <%= @recipe.directions %><br><br>
 <h3>Categories:</h3>
@@ -24,5 +26,12 @@
     <li><%= link_to category.name, category_path(category) %></li>
 <% end %>
 </ul>
+<br>
+<h3>Links to Other Recipes With Similar Ingredients</h3>
+</ul>
+<% @recipe.ingredients.each do |ingredient| %>
+    <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+<% end %>
+</ul><br><br>
 <%= link_to "Edit Recipe", edit_recipe_path(@recipe) if @recipe.user == current_user %><br>
 <%= link_to "Delete Recipe", @recipe, method: :delete, data: {confirm: "Are you sure you want to delete this recipe?"} if @recipe.user == current_user %>

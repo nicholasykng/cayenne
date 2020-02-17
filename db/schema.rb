@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_214855) do
+ActiveRecord::Schema.define(version: 2020_02_17_223547) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_214855) do
     t.string "directions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ingredients_list"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 

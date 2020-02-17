@@ -8,9 +8,13 @@
     <%= f.text_field :cook_time %><br>
     <%= f.label "Serving Size (Please enter the number of servings)" %><br>
     <%= f.text_field :serving_size %><br>
+    <%= f.label "Ingredients List(Please list out all ingredients including the quantity)" %><br>
+    <%= f.text_area :ingredients_list %><br>
     <%= f.label "Directions (Please list out the directions in a numbered list)" %><br>
     <%= f.text_area :directions %><br>
     <%= f.label "Categories (Please select a category or multiple categories)" %><br>
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br><br>
+    <%= f.label "Ingredients Selection(Please help to select all of your ingredients you have added)" %><br>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %><br><br>
     <%= f.submit "Submit Recipe" %>
 <% end %>

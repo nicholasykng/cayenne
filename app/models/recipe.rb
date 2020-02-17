@@ -11,4 +11,5 @@ class Recipe < ApplicationRecord
     validates :cook_time, presence: true
     validates :serving_size, presence: true
     validates :directions, presence: true
+    validates :ingredients, presence: true
 end
