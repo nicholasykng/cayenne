@@ -1,7 +1,8 @@
 <%= form_for @recipe do |f| %>
+    <%= render partial: "users/error", locals: {error_term: @recipe} %>
     <%= f.label "Title of Recipe" %><br>
     <%= f.text_field :title %><br>
-    <%= f.label "Level of Difficulty (Easy, Medium or Hard)" %><br>
+    <%= f.label "Level of Difficulty (Easy, Intermediate or Advanced)" %><br>
     <%= f.text_field :level %><br>
     <%= f.label "Cook Time (Please include minutes and/or hour required)" %><br>
     <%= f.text_field :cook_time %><br>
