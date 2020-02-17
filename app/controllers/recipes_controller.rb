@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
     end
 
     def create
-        @recipe = Recipe.new(recipes_params)
+        @recipe = current_user.recipes.build(recipes_params)
         if @recipe.save
             redirect_to recipe_path(@recipe)
         else
