@@ -1,5 +1,4 @@
 <h1>Welcome to Cayenne!</h1>
-<% if @user %>
-    <%= @user.name %>
-<% end %>
-<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<%= link_to("Create an Account", new_user_path) %><br>
+<%= link_to('Log in with Email and Password', "/login") %><br>
+<%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
