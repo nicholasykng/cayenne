@@ -12,4 +12,9 @@ class Recipe < ApplicationRecord
     validates :serving_size, presence: true
     validates :directions, presence: true
     validates :ingredients, presence: true
+
+    def self.by_user(user_id)
+        where(user: user_id)
+    end
+        
 end

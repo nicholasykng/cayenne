@@ -1,6 +1,11 @@
 class RecipesController < ApplicationController
     def index
-        @recipes = Recipe.all
+        @users = User.all
+        if !params[:user].blank?
+            @recipes = Recipe.by_user(params[:user])
+        else
+            @recipes = Recipe.all
+        end
     end
 
     def new
