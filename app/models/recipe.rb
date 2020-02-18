@@ -9,7 +9,7 @@ class Recipe < ApplicationRecord
     validates :title, presence: true
     validates :level, inclusion: {in: %w(Easy Intermediate Advanced), message: "Please be sure to enter Easy, Intermediate or Advanced"}
     validates :cook_time, presence: true
-    validates :serving_size, presence: true
+    validates :serving_size, numericality: {only_integer: true}
     validates :directions, presence: true
     validates :ingredients, presence: true
 
