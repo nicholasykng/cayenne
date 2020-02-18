@@ -16,5 +16,13 @@ class Recipe < ApplicationRecord
     def self.by_user(user_id)
         where(user: user_id)
     end
+
+    def self.by_new
+        order(created_at: :desc)
+    end
+
+    def self.by_old
+        order(created_at: :asc)
+    end
         
 end

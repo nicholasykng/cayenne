@@ -3,6 +3,12 @@ class RecipesController < ApplicationController
         @users = User.all
         if !params[:user].blank?
             @recipes = Recipe.by_user(params[:user])
+        elsif !params[:date].blank?
+            if params[:date] == "DESC"
+                @recipes = Recipe.by_new
+            else
+                @recipes = Recipe.by_old
+            end
         else
             @recipes = Recipe.all
         end
