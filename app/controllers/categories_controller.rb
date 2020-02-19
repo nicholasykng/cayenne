@@ -1,9 +1,6 @@
 class CategoriesController < ApplicationController
     layout "logged_in"
     before_action :require_login
-    def new
-        @category = Category.new
-    end
 
     def create
         @category = Category.new(categories_params)
@@ -12,10 +9,6 @@ class CategoriesController < ApplicationController
         else
             render :new
         end
-    end
-
-    def index
-        @categories = Category.all
     end
 
     def show

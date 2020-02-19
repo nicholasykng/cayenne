@@ -1,10 +1,7 @@
 class IngredientsController < ApplicationController
     layout "logged_in"
     before_action :require_login
-    def new
-        @ingredient = Ingredient.new
-    end
-
+    
     def create
         @ingredient = Ingredient.new(ingredients_params)
         if @ingredient.save
@@ -12,10 +9,6 @@ class IngredientsController < ApplicationController
         else
             render :new
         end
-    end
-
-    def index
-        @ingredients = Ingredient.all
     end
 
     def show

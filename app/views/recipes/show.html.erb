@@ -1,7 +1,8 @@
-<div class="title-container">
-<h1><%= @recipe.title %>
+<h1><%= @recipe.title %></h1>
+<div class= "title-container">
 <h2>Created By: <%= @recipe.user.name %></h2>
-<table>
+</div>
+<table class="center">
 <thead>
     <tr>
         <th>Level of Difficulty</th>
@@ -16,32 +17,46 @@
         <td><%= @recipe.serving_size %></td>
     </tr>
 </tbody>
-</table><br>
-<h4>Average Rating</h4>
-<%= @recipe.average_rating %>
+</table>
+
+<div class= "title-container">
+<h3>Average Rating: <%= @recipe.average_rating %></h3>
 </div>
+<div class= "title-container">
+<%= link_to "Edit Recipe", edit_recipe_path(@recipe) if @recipe.user == current_user %><br>
+<%= link_to "Delete Recipe", @recipe, method: :delete, data: {confirm: "Are you sure you want to delete this recipe?"} if @recipe.user == current_user %>
+</div>
+
+<div class= "row">
+<div class= "column">
 <h3>Ingredients:</h3>
 <%= @recipe.ingredients_list %>
-
-<h3>Directions:</h3><br>
+</div>
+<div class="column">
+<h3>Directions:</h3>
 <%= @recipe.directions %><br><br>
+</div>
+</div>
 
+<div class= "row">
+<div class= "column">
 <h3>Categories:</h3>
 <ul>
 <% @recipe.categories.each do |category| %>
     <li><%= link_to category.name, category_path(category) %></li>
 <% end %>
 </ul>
-<br>
-
+</div>
+<div class="column">
 <h3>Links to Other Recipes With Similar Ingredients</h3>
 <ul>
 <% @recipe.ingredients.each do |ingredient| %>
     <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
 <% end %>
-</ul><br>
-<%= link_to "Edit Recipe", edit_recipe_path(@recipe) if @recipe.user == current_user %><br>
-<%= link_to "Delete Recipe", @recipe, method: :delete, data: {confirm: "Are you sure you want to delete this recipe?"} if @recipe.user == current_user %>
+</ul>
+</div>
+</div>
+
 <h3>Ratings:</h3>
 
 <ul>
