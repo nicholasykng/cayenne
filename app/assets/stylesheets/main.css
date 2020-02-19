@@ -58,20 +58,7 @@ table.center {
     margin-left:auto; 
     margin-right:auto;
   }
-
-  .column {
-    float: left;
-  }
   
-  .left {
-    width: 45%;
-  }
-  
-  .right {
-    width: 55%;
-  }
-  
-  /* Clear floats after the columns */
   .row:after {
     content: "";
     display: table;
@@ -124,4 +111,9 @@ table.center {
   input[type=submit]:hover {
     background-color: #45a049;
   }
-  
+
+  img.index {
+      height: auto;
+      width: auto;
+  }
+

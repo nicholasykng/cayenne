@@ -1,6 +1,14 @@
 class IngredientsController < ApplicationController
     layout "logged_in"
     before_action :require_login
+
+    def new
+        @ingredient = Ingredient.new
+    end
+
+    def index
+        @ingredients = Ingredient.all 
+    end
     
     def create
         @ingredient = Ingredient.new(ingredients_params)

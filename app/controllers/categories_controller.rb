@@ -2,10 +2,19 @@ class CategoriesController < ApplicationController
     layout "logged_in"
     before_action :require_login
 
+    def new
+        @category = Category.new
+    end
+
+    def index
+        @categories = Category.all 
+    end
+
+
     def create
         @category = Category.new(categories_params)
         if @category.save
-            redirect_to user_path(current_user)
+            redirect_to categories_path
         else
             render :new
         end
@@ -14,7 +23,6 @@ class CategoriesController < ApplicationController
     def show
         @category = Category.find(params[:id])
     end
-
 
     private
     def categories_params

@@ -1,4 +1,6 @@
+<h1>Add Category</h1>
 <%= form_for @category do |f| %>
+    <%= render partial: "users/error", locals: {error_term: @category} %>
     <%= f.label "Name of Category:" %><br>
     <%= f.text_field :name %><br><br>
     <%= f.submit "Submit Category" %>

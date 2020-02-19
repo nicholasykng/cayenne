@@ -1,6 +1,6 @@
 <h1><%= @category.name %></h1>
 <ul>
-<% @category.recipes.each do |recipe| %>
+<% @category.recipes.uniq.each do |recipe| %>
     <li><%= link_to recipe.title, recipe_path(recipe) %></li>
 <% end %>
 </ul>
