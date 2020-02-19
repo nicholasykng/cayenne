@@ -12,6 +12,7 @@ class Recipe < ApplicationRecord
     validates :serving_size, numericality: {only_integer: true}
     validates :directions, presence: true
     validates :ingredients, presence: true
+    accepts_nested_attributes_for :categories
 
     def self.by_user(user_id)
         where(user: user_id)
@@ -23,6 +24,15 @@ class Recipe < ApplicationRecord
 
     def self.by_old
         order(created_at: :asc)
+    end
+
+    def categories_attributes=(category_attributes)
+        category_attributes.values.each do |category_attribute|
+            if category_attribute['name'].present?
+                category = Category.find_or_create_by(category_attribute)
+                self.categories << category
+            end
+        end
     end
         
 end
