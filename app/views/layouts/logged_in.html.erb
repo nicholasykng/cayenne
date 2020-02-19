@@ -17,10 +17,9 @@
             <nav>
                 <ul>
                     <li><%= link_to "Home", root_path %></li>
-                    <li><%= link_to "Create An Account", new_user_path %></li>
-                    <li><%= link_to "Sign in Using Email", login_path %></li>
-                    <li><%= link_to "Sign in Using Facebook", '/auth/facebook' %></li>
-                    <li><%= link_to "Logout", logout_path %></li>
+                    <li><%= link_to "Add a New Recipe", new_recipe_path %></li>
+                    <li><%= link_to "See all Recipes", recipes_path %></li>
+                    <li><%=link_to "Logout", logout_path %></li>
                 </ul>
             </nav>
         </header>

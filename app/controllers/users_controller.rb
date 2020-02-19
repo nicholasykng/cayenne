@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        render :layout => "logged_in"
     end
 
     def index

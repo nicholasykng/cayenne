@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+    layout "logged_in"
+    before_action :require_login
     def new
         @category = Category.new
     end

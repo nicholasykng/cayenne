@@ -12,6 +12,7 @@ class Recipe < ApplicationRecord
     validates :serving_size, numericality: {only_integer: true}
     validates :directions, presence: true
     validates :ingredients, presence: true
+    validates :categories, presence: true
     accepts_nested_attributes_for :categories
     accepts_nested_attributes_for :ingredients
 
@@ -47,14 +48,6 @@ class Recipe < ApplicationRecord
 
     def average_rating
         self.ratings.average(:score)
-    end
-
-    def self.by_rating_best
-        order(average_rating: :desc)
-    end
-
-    def self.by_rating_worst
-        order(average_rating: :asc)
     end
 
         

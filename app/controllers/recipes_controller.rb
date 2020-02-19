@@ -1,19 +1,15 @@
 class RecipesController < ApplicationController
+    layout "logged_in"
+    before_action :require_login
     def index
         @users = User.all
         if !params[:user].blank?
             @recipes = Recipe.by_user(params[:user])
         elsif !params[:date].blank?
-            if params[:date] == "DESC"
+            if params[:date] == "Descending"
                 @recipes = Recipe.by_new
             else
                 @recipes = Recipe.by_old
-            end
-        elsif !params[:rating].blank?
-            if params[:rating] == "DESC"
-                @recipes = Recipe.by_rating_best
-            else
-                @recipes = Recipe.by_rating_worst
             end
         else
             @recipes = Recipe.all

@@ -1,3 +1,4 @@
+<div class="title-container">
 <h1><%= @recipe.title %>
 <h2>Created By: <%= @recipe.user.name %></h2>
 <table>
@@ -17,7 +18,8 @@
 </tbody>
 </table><br>
 <h4>Average Rating</h4>
-<%= @recipe.average_rating%>
+<%= @recipe.average_rating %>
+</div>
 <h3>Ingredients:</h3>
 <%= @recipe.ingredients_list %>
 
