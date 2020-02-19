@@ -27,19 +27,18 @@
 <%= link_to "Delete Recipe", @recipe, method: :delete, data: {confirm: "Are you sure you want to delete this recipe?"} if @recipe.user == current_user %>
 </div>
 
-<div class= "row">
-<div class= "column">
+<div class="row">
+<div class="column left">
 <h3>Ingredients:</h3>
 <%= @recipe.ingredients_list %>
 </div>
-<div class="column">
+<div class="column right">
 <h3>Directions:</h3>
 <%= @recipe.directions %><br><br>
 </div>
 </div>
-
-<div class= "row">
-<div class= "column">
+<div class="test_row">
+<div class="test_column">
 <h3>Categories:</h3>
 <ul>
 <% @recipe.categories.each do |category| %>
@@ -47,7 +46,7 @@
 <% end %>
 </ul>
 </div>
-<div class="column">
+<div class="test_column">
 <h3>Links to Other Recipes With Similar Ingredients</h3>
 <ul>
 <% @recipe.ingredients.each do |ingredient| %>
@@ -56,22 +55,16 @@
 </ul>
 </div>
 </div>
-
+<div class="test_row">
+<div class="test_column">
 <h3>Ratings:</h3>
-
 <ul>
 <% @recipe.ratings.each do |rating| %>
     <li><%= rating.score %>/10 - <%= rating.user.name %></li>
 <% end %>
 </ul>
-
-<h3>Comments:</h3>
-<ul>
-<% @recipe.comments.each do |comment| %>
-    <li><%= comment.user.name %> says: <%= comment.content %></li>
-<% end %>
-</ul>
-
+</div>
+<div class="test_column">
 <h3>Add Rating Out of 10</h3>
 <%= form_for @recipe.ratings.build do |f| %>
     <%= f.hidden_field :recipe_id %>
@@ -79,7 +72,18 @@
     <%= f.text_field :score %><br>
     <%= f.submit "Submit Rating" %>
 <% end %>
-
+</div>
+</div>
+<div class="test_row">
+<div class="test_column">
+<h3>Comments:</h3>
+<ul>
+<% @recipe.comments.each do |comment| %>
+    <li><%= comment.user.name %> says: <%= comment.content %></li>
+<% end %>
+</ul>
+</div>
+<div class="test_column">
 <h3>Add Comment</h3>
 <%= form_for @recipe.comments.build do |f| %>
     <%= f.hidden_field :recipe_id %>
@@ -88,5 +92,7 @@
     <%= f.text_area :content %><br>
     <%= f.submit "Submit Comment" %>
 <% end %>
-
+</div>
+</div>
+<br>
 <%= link_to "Return to All Recipes", recipes_path %>
