@@ -44,5 +44,18 @@ class Recipe < ApplicationRecord
             end
         end
     end
+
+    def average_rating
+        self.ratings.average(:score)
+    end
+
+    def self.by_rating_best
+        order(average_rating: :desc)
+    end
+
+    def self.by_rating_worst
+        order(average_rating: :asc)
+    end
+
         
 end

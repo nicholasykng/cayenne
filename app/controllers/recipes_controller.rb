@@ -9,6 +9,12 @@ class RecipesController < ApplicationController
             else
                 @recipes = Recipe.by_old
             end
+        elsif !params[:rating].blank?
+            if params[:rating] == "DESC"
+                @recipes = Recipe.by_rating_best
+            else
+                @recipes = Recipe.by_rating_worst
+            end
         else
             @recipes = Recipe.all
         end

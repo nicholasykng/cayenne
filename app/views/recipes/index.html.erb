@@ -3,10 +3,14 @@
     <h3>Filter Recipes:</h3>
     <%= form_tag("/recipes", method: 'get') do %>
         <%= select_tag "user", options_from_collection_for_select(@users, "id", "name"), include_blank: true %>
-        <%= submit_tag "Filter" %>
+        
     
     <h3>Order By Creation Date:</h3>
     <%= select_tag "date", options_for_select(['Ascending', "Descending"]), include_blank: true %>
+    
+    
+    <h3>Order By Ratings</h3>
+    <%= select_tag "rating", options_for_select(["Ascending", "Descending"]), include_blank: true %>
     <%= submit_tag "Filter" %>
     <% end %>
 </div>
