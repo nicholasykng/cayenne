@@ -13,12 +13,16 @@
     <%= f.label "Directions (Please list out the directions in a numbered list)" %><br>
     <%= f.text_area :directions %><br>
     <%= f.label "Categories (Please select a category or multiple categories)" %><br>
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br><br>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
     <%= f.fields_for :categories, @recipe.categories.build do |categories_field| %>
-        <%= categories_field.label :category %><br>
+        <%= categories_field.label "Add a Unique Category:" %><br>
         <%= categories_field.text_field :name %><br>
     <% end %>
     <%= f.label "Ingredients Selection(Please help to select all of your ingredients you have added)" %><br>
     <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %><br><br>
+    <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredients_field| %>
+        <%= ingredients_field.label "Add a Unique Ingredient:" %><br>
+        <%= ingredients_field.text_field :name %><br>
+    <% end %>
     <%= f.submit "Submit Recipe" %>
 <% end %>

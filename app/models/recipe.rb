@@ -13,6 +13,7 @@ class Recipe < ApplicationRecord
     validates :directions, presence: true
     validates :ingredients, presence: true
     accepts_nested_attributes_for :categories
+    accepts_nested_attributes_for :ingredients
 
     def self.by_user(user_id)
         where(user: user_id)
@@ -31,6 +32,15 @@ class Recipe < ApplicationRecord
             if category_attribute['name'].present?
                 category = Category.find_or_create_by(category_attribute)
                 self.categories << category
+            end
+        end
+    end
+
+    def ingredients_attributes=(ingredient_attributes)
+        ingredient_attributes.values.each do |ingredient_attribute|
+            if ingredient_attribute["name"].present?
+                ingredient = Ingredient.find_or_create_by(ingredient_attribute)
+                self.ingredients << ingredient
             end
         end
     end
