@@ -12,25 +12,46 @@ class RecipesController < ApplicationController
                 @recipes = Recipe.by_old
             end
         else
-            @recipes = Recipe.all
+            if params[:user_id]
+                @user = User.find_by(id: params[:user_id])
+                if @user.nil?
+                    redirect_to users_path, alert: "User not found."
+                else
+                    @recipes = @user.recipes
+                end
+            else
+                @recipes = Recipe.all
+            end
         end
     end
 
     def new
-        @recipe = Recipe.new
+        if params[:user_id] && !User.exists?(params[:user_id])
+            redirect_to users_path, alert: "User not found."
+        else
+            @recipe = Recipe.new(user_id: params[:user_id])
+        end
     end
 
     def create
         @recipe = current_user.recipes.build(recipes_params)
         if @recipe.save
-            redirect_to recipe_path(@recipe)
+            redirect_to @recipe
         else
             render :new
         end
     end
 
     def show
-        @recipe = Recipe.find(params[:id])
+        if params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            @recipe = @user.recipes.find_by(id: params[:id])
+            if @recipe.nil?
+                redirect_to user_recipes_path(@user), alert: "Recipe not found."
+            end
+        else
+            @recipe = Recipe.find(params[:id])
+        end
     end
 
     def edit
@@ -55,7 +76,7 @@ class RecipesController < ApplicationController
 
     private
     def recipes_params
-        params.require(:recipe).permit(:title, :level, :cook_time, :serving_size, :directions, :ingredients_list, category_ids: [], ingredient_ids: [], categories_attributes: [:name], ingredients_attributes: [:name])
+        params.require(:recipe).permit(:user_id, :title, :level, :cook_time, :serving_size, :directions, :ingredients_list, category_ids: [], ingredient_ids: [], categories_attributes: [:name], ingredients_attributes: [:name])
     end
 
 

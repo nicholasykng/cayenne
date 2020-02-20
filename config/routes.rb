@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:new, :create, :show] do
+    resources :recipes, only: [:index, :create, :new, :show, :update, :edit]
+  end
+  resources :recipes
   get "/login" => 'sessions#new'
   post "/login" => 'sessions#create'
   get "/logout" => 'sessions#destroy'
   root "users#index"
   get '/auth/facebook/callback' => 'sessions#create'
-  resources :recipes do
-    resources :categories, only: [:index, :create, :new]
-    resources :ingredients, only: [:new, :create, :index]
-    resources :comments, only: [:create, :index, :show]
-  end
-  resources :categories do
-    resources :recipes, only: [:index, :show]
-  end
+  
+    
+  resources :categories
   resources :ingredients
   resources :comments
   resources :ratings

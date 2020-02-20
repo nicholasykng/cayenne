@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :require_login, only: [:show]
+    
     def new
         @user = User.new
     end
@@ -17,12 +19,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         render :layout => "logged_in"
     end
-
-    def index
-        @user = current_user
-    end
         
-
     private
     def users_params
         params.require(:user).permit(:name, :email, :password)

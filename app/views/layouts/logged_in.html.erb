@@ -17,8 +17,10 @@
             <nav>
                 <ul>
                     <li><%= link_to "Home", user_path(current_user) %></li>
-                    <li><%= link_to "Add A New Recipe", new_recipe_path %></li>
                     <li><%= link_to "See All Recipes", recipes_path %></li>
+                    <li><%= link_to "Add New Recipes", new_recipe_path %></li>
+                    <li><%= link_to "Add New Ingredients Manually", new_ingredient_path %></li>
+                    <li><%= link_to "Add New Categories Manually", new_category_path %></li>
                     <li><%=link_to "Logout", logout_path %></li>
                 </ul>
             </nav>
