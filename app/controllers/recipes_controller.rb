@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
     layout "logged_in"
     before_action :require_login
+
     def index
         @users = User.all
         if !params[:user].blank?
@@ -55,15 +56,29 @@ class RecipesController < ApplicationController
     end
 
     def edit
-        @recipe = Recipe.find(params[:id])
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            if user.nil?
+                redirect_to users_path, alert: "User not found."
+            else
+                @recipe = user.recipes.find_by(id: params[:id])
+                redirect_to user_recipes_path(user), alert: "Recipe not found." if @recipe.nil? 
+            end
+        else
+            @recipe = Recipe.find(params[:id])
+        end
     end
 
     def update
         @recipe = Recipe.find(params[:id])
-        if @recipe.update(recipes_params)
-            redirect_to recipe_path(@recipe)
+        if @recipe.user == current_user
+            if @recipe.update(recipes_params)
+                redirect_to recipe_path(@recipe)
+            else
+                render :edit
+            end
         else
-            render :edit
+            redirect_to recipes_path, alert: "You are unable to edit other user's recipes!!!"
         end
     end
 

@@ -1,5 +1,6 @@
-<h1>Welcome to Cayenne!</h1>
-<div class="title-container">
-<p>Your Go To Destination For Adding and Viewing Recipes</p>
-<img class ="index" src="https://cdn.vox-cdn.com/thumbor/j8ePtgnUnMCEvSNw6qnRk6dyrFs=/0x0:960x720/1200x900/filters:focal(404x284:556x436)/cdn.vox-cdn.com/uploads/chorus_image/image/56207165/yuzu_2.0.jpg">
-</div>
+<%= flash[:alert] %>
+<ul>
+<% @users.each do |user| %>
+    <li><%= link_to user.name, user_recipes_path(user) %></li>
+<% end %>
+</ul>
