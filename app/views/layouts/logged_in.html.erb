@@ -16,9 +16,9 @@
            <img src="https://cdn.shopify.com/s/files/1/1068/6100/products/cayennepepper_1024x1024.jpg?v=1448195713">
             <nav>
                 <ul>
-                    <li><%= link_to "Home", root_path %></li>
-                    <li><%= link_to "Add a New Recipe", new_recipe_path %></li>
-                    <li><%= link_to "See all Recipes", recipes_path %></li>
+                    <li><%= link_to "Home", user_path(current_user) %></li>
+                    <li><%= link_to "Add A New Recipe", new_recipe_path %></li>
+                    <li><%= link_to "See All Recipes", recipes_path %></li>
                     <li><%=link_to "Logout", logout_path %></li>
                 </ul>
             </nav>

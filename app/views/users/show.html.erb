@@ -2,6 +2,10 @@
 <div class="title-container">
 <h2>What would you like to do today?</h2>
 </div>
-
+<h3>Your Recipes</h3>
+<ul>
+<% @user.recipes.each do |recipe| %>
+    <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+<% end %>
 
     
