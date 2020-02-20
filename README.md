@@ -28,7 +28,7 @@ This app provides a place for users to add recipes and view recipes created by o
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'dandy-zombie-5066'/cayenne. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/nicholasykng/cayenne. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
