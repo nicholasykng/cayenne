@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController 
+    
     def create
         rating = Rating.create(ratings_params)
         redirect_to rating.recipe

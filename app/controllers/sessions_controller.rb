@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    
     def new
         @user = User.new
     end
@@ -8,9 +9,9 @@ class SessionsController < ApplicationController
             @user = User.find_or_create_by(name: auth['info']['name']) do |u|
                 u.email = auth['info']['email']
                 u.password = SecureRandom.hex
-            end
-                session[:user_id] = @user.id
-                redirect_to user_path(@user)
+                end
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
         else
             @user = User.find_by(email: params[:email])
                 if @user.authenticate(params[:password])
@@ -19,8 +20,7 @@ class SessionsController < ApplicationController
                 else
                     render :new
                 end
-        end
-            
+        end     
     end
 
     def destroy
@@ -32,6 +32,4 @@ class SessionsController < ApplicationController
     def auth
         request.env['omniauth.auth']
     end
-
-
 end

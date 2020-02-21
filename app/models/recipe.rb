@@ -16,6 +16,7 @@ class Recipe < ApplicationRecord
     validates :ingredients, presence: true
     accepts_nested_attributes_for :categories
     accepts_nested_attributes_for :ingredients
+    
 
     def self.by_user(user_id)
         where(user: user_id)
@@ -50,6 +51,5 @@ class Recipe < ApplicationRecord
     def average_rating
         self.ratings.average(:score)
     end
-
         
 end
