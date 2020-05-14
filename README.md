@@ -1,4 +1,4 @@
-Cayenne
+## Cayenne
 Your go to app for managing your recipes.
 
 This app provides a place for users to add recipes and view recipes created by others. 
