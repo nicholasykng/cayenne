@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index] do
-    resources :recipes, only: [:index, :create, :new, :show, :update, :edit]
+    resources :recipes
   end
   resources :recipes
   get "/login" => 'sessions#new'

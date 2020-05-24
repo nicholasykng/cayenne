@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_02_17_223547) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -19,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_223547) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "recipe_id"
+    t.bigint "user_id"
+    t.bigint "recipe_id"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_223547) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "recipe_id"
+    t.bigint "user_id"
+    t.bigint "recipe_id"
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -46,8 +49,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_223547) do
   end
 
   create_table "recipe_categories", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "category_id"
+    t.bigint "recipe_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_recipe_categories_on_category_id"
@@ -55,8 +58,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_223547) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
+    t.bigint "recipe_id"
+    t.bigint "ingredient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_223547) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "title"
     t.string "level"
     t.string "cook_time"

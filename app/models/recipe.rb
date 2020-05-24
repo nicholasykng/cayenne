@@ -16,7 +16,7 @@ class Recipe < ApplicationRecord
     validates :ingredients, presence: true
     accepts_nested_attributes_for :categories
     accepts_nested_attributes_for :ingredients
-    
+    #scope :by_new, -> { order(created_at: :desc) }
 
     def self.by_user(user_id)
         where(user: user_id)
