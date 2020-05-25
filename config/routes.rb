@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/login" => 'sessions#create'
   get "/logout" => 'sessions#destroy'
   root "sessions#index"
+  get '/users/auth/facebook/callback' => 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#create'
   
     
