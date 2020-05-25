@@ -13,7 +13,7 @@ This app provides a place for users to add recipes and view recipes created by o
 1. Clone this repo
 2. Run bundle
 3. Run rake db:migrate
-4. Run rails s and navigate to http://localhost:3000
+4. Run thin start --ssl and navigate to https://localhost:3000
 
 ## Usage
 
